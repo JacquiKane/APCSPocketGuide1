@@ -6,14 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AP CS Pocket Guide #1</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
         body {
             background-color: lightblue;
             font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
         }
-        
+
+        .center-me {
+            margin: 0 auto;
+            overflow-x: scroll;
+        }
+
+        .modalpos {
+            display: inline-block;
+            padding-left: 10%;
+            margin-left: 20px;
+
+        }
+
         .container {
             display: -webkit-box;
             display: -ms-flexbox;
@@ -26,25 +40,25 @@
             justify-content: space-between;
             padding: 4px 16px;
         }
-        
+
         #buttons-container {
             border: 3px dashed blue;
             margin: 5%;
             padding: 5%;
         }
-        
+
         #cards-container {
             overflow: hidden;
             margin: 20px;
         }
-        
+
         .cards {
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
             width: 99999px;
         }
-        
+
         .card {
             /* Add shadows to create the "card" effect */
             -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -55,30 +69,30 @@
             width: 235px;
             margin: 15px 7.5px;
         }
-        
-        .card:hover{
+
+        .card:hover {
             -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
             box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
             cursor: pointer;
         }
-        
+
         .card .img {
             max-width: 220px;
             height: 220px;
             display: inline-block;
         }
-        
+
         #slide-left-container,
         #slide-right-container {
             display: none;
         }
-        
+
         #slide-left-container.active,
         #slide-right-container.active {
             display: block;
             cursor: pointer;
         }
-        
+
         .slide-left,
         .slide-right {
             border-color: #fff;
@@ -87,32 +101,33 @@
             width: 20px;
             margin-top: 30%;
         }
-        
+
         .slide-left {
             border-width: 4px 0 0 4px;
             -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
             margin-left: 40%;
         }
-        
+
         .slide-right {
             border-width: 4px 4px 0 0;
             -webkit-transform: rotate(45deg);
             transform: rotate(45deg);
             margin-left: 22%;
         }
+
         /* card and carousel styles from vocab */
-        
+
         .carousel-item.active,
         .carousel-item-next,
         .carousel-item-prev {
             display: block;
         }
-        
+
         .carouselback {
             background-color: black;
         }
-        
+
         .carouseldef {
             width: 90%;
             padding-left: 10%;
@@ -120,11 +135,11 @@
             justify-content: left;
             color: seashell;
         }
-        
+
         .carouselh3 {
             color: seashell;
         }
-        
+
         .carouselParagraph {
             color: azure;
             width: 80%;
@@ -132,564 +147,602 @@
             text-align: left;
             padding-left: 15%;
         }
-        
+
         .modal-dialog {
             width: 1500px;
         }
-        
+
         .tablequestion {
             display: table;
             border: 5px solid blue;
             padding: 10px;
             border-collapse: separate;
+            justify-content: left;
+            text-align: left;
         }
-        
+
         table.question-table tbody td {
             border: solid thin;
             padding-left: 3px;
         }
-        
+
         table.question-table tbody th {
             border: solid thin;
             padding-left: 3px;
         }
-        
+
         .infocell {
             background-color: powderblue;
         }
-        
+
         .material-icons i {
             margin-right: -10px;
             padding-right: -20px;
         }
-        
+
         i.custom {
             font-size: 2em;
             color: green;
         }
-        
+
         .oomph {
             font-style: italic;
             font-weight: bold;
         }
-        
+
         .animated {
             -webkit-animation-duration: 1s;
             animation-duration: 1s;
             -webkit-animation-fill-mode: both;
             animation-fill-mode: both;
         }
-        
+
         @-webkit-keyframes fadeIn {
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
         }
-        
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
         }
-        
+
         .fadeIn {
             -webkit-animation-name: fadeIn;
             animation-name: fadeIn;
         }
-        
+
         @-webkit-keyframes fadeInDown {
             from {
                 opacity: 0;
                 -webkit-transform: translate3d(0, -100%, 0);
                 transform: translate3d(0, -100%, 0);
             }
+
             to {
                 opacity: 1;
                 -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
             }
         }
-        
+
         @keyframes fadeInDown {
             from {
                 opacity: 0;
                 -webkit-transform: translate3d(0, -100%, 0);
                 transform: translate3d(0, -100%, 0);
             }
+
             to {
                 opacity: 1;
                 -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
             }
         }
-        
+
         .fadeInDown {
             -webkit-animation-name: fadeInDown;
             animation-name: fadeInDown;
         }
-        
+
         @-webkit-keyframes fadeInDownBig {
             from {
                 opacity: 0;
                 -webkit-transform: translate3d(0, -2000px, 0);
                 transform: translate3d(0, -2000px, 0);
             }
+
             to {
                 opacity: 1;
                 -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
             }
         }
-        
+
         @keyframes fadeInDownBig {
             from {
                 opacity: 0;
                 -webkit-transform: translate3d(0, -2000px, 0);
                 transform: translate3d(0, -2000px, 0);
             }
+
             to {
                 opacity: 1;
                 -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
             }
         }
-        
+
         .fadeInDownBig {
             -webkit-animation-name: fadeInDownBig;
             animation-name: fadeInDownBig;
         }
-        
+
         @-webkit-keyframes fadeInLeft {
             from {
                 opacity: 0;
                 -webkit-transform: translate3d(-100%, 0, 0);
                 transform: translate3d(-100%, 0, 0);
             }
+
             to {
                 opacity: 1;
                 -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
             }
         }
-        
+
         @keyframes fadeInLeft {
             from {
                 opacity: 0;
                 -webkit-transform: translate3d(-100%, 0, 0);
                 transform: translate3d(-100%, 0, 0);
             }
+
             to {
                 opacity: 1;
                 -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
             }
         }
-        
+
         .fadeInLeft {
             -webkit-animation-name: fadeInLeft;
             animation-name: fadeInLeft;
         }
-        
+
         @-webkit-keyframes fadeInLeftBig {
             from {
                 opacity: 0;
                 -webkit-transform: translate3d(-2000px, 0, 0);
                 transform: translate3d(-2000px, 0, 0);
             }
+
             to {
                 opacity: 1;
                 -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
             }
         }
-        
+
         @keyframes fadeInLeftBig {
             from {
                 opacity: 0;
                 -webkit-transform: translate3d(-2000px, 0, 0);
                 transform: translate3d(-2000px, 0, 0);
             }
+
             to {
                 opacity: 1;
                 -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
             }
         }
-        
+
         .fadeInLeftBig {
             -webkit-animation-name: fadeInLeftBig;
             animation-name: fadeInLeftBig;
         }
-        
+
         @-webkit-keyframes fadeInRight {
             from {
                 opacity: 0;
                 -webkit-transform: translate3d(100%, 0, 0);
                 transform: translate3d(100%, 0, 0);
             }
+
             to {
                 opacity: 1;
                 -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
             }
         }
-        
+
         @keyframes fadeInRight {
             from {
                 opacity: 0;
                 -webkit-transform: translate3d(100%, 0, 0);
                 transform: translate3d(100%, 0, 0);
             }
+
             to {
                 opacity: 1;
                 -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
             }
         }
-        
+
         .fadeInRight {
             -webkit-animation-name: fadeInRight;
             animation-name: fadeInRight;
         }
-        
+
         @-webkit-keyframes fadeInRightBig {
             from {
                 opacity: 0;
                 -webkit-transform: translate3d(2000px, 0, 0);
                 transform: translate3d(2000px, 0, 0);
             }
+
             to {
                 opacity: 1;
                 -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
             }
         }
-        
+
         @keyframes fadeInRightBig {
             from {
                 opacity: 0;
                 -webkit-transform: translate3d(2000px, 0, 0);
                 transform: translate3d(2000px, 0, 0);
             }
+
             to {
                 opacity: 1;
                 -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
             }
         }
-        
+
         .fadeInRightBig {
             -webkit-animation-name: fadeInRightBig;
             animation-name: fadeInRightBig;
         }
-        
+
         @-webkit-keyframes fadeInUp {
             from {
                 opacity: 0;
                 -webkit-transform: translate3d(0, 100%, 0);
                 transform: translate3d(0, 100%, 0);
             }
+
             to {
                 opacity: 1;
                 -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
             }
         }
-        
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
                 -webkit-transform: translate3d(0, 100%, 0);
                 transform: translate3d(0, 100%, 0);
             }
+
             to {
                 opacity: 1;
                 -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
             }
         }
-        
+
         .fadeInUp {
             -webkit-animation-name: fadeInUp;
             animation-name: fadeInUp;
         }
-        
+
         @-webkit-keyframes fadeInUpBig {
             from {
                 opacity: 0;
                 -webkit-transform: translate3d(0, 2000px, 0);
                 transform: translate3d(0, 2000px, 0);
             }
+
             to {
                 opacity: 1;
                 -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
             }
         }
-        
+
         @keyframes fadeInUpBig {
             from {
                 opacity: 0;
                 -webkit-transform: translate3d(0, 2000px, 0);
                 transform: translate3d(0, 2000px, 0);
             }
+
             to {
                 opacity: 1;
                 -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
             }
         }
-        
+
         .fadeInUpBig {
             -webkit-animation-name: fadeInUpBig;
             animation-name: fadeInUpBig;
         }
-        
+
         @-webkit-keyframes fadeOut {
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
             }
         }
-        
+
         @keyframes fadeOut {
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
             }
         }
-        
+
         .fadeOut {
             -webkit-animation-name: fadeOut;
             animation-name: fadeOut;
         }
-        
+
         @-webkit-keyframes fadeOutDown {
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
                 -webkit-transform: translate3d(0, 100%, 0);
                 transform: translate3d(0, 100%, 0);
             }
         }
-        
+
         @keyframes fadeOutDown {
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
                 -webkit-transform: translate3d(0, 100%, 0);
                 transform: translate3d(0, 100%, 0);
             }
         }
-        
+
         .fadeOutDown {
             -webkit-animation-name: fadeOutDown;
             animation-name: fadeOutDown;
         }
-        
+
         @-webkit-keyframes fadeOutDownBig {
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
                 -webkit-transform: translate3d(0, 2000px, 0);
                 transform: translate3d(0, 2000px, 0);
             }
         }
-        
+
         @keyframes fadeOutDownBig {
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
                 -webkit-transform: translate3d(0, 2000px, 0);
                 transform: translate3d(0, 2000px, 0);
             }
         }
-        
+
         .fadeOutDownBig {
             -webkit-animation-name: fadeOutDownBig;
             animation-name: fadeOutDownBig;
         }
-        
+
         @-webkit-keyframes fadeOutLeft {
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
                 -webkit-transform: translate3d(-100%, 0, 0);
                 transform: translate3d(-100%, 0, 0);
             }
         }
-        
+
         @keyframes fadeOutLeft {
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
                 -webkit-transform: translate3d(-100%, 0, 0);
                 transform: translate3d(-100%, 0, 0);
             }
         }
-        
+
         .fadeOutLeft {
             -webkit-animation-name: fadeOutLeft;
             animation-name: fadeOutLeft;
         }
-        
+
         @-webkit-keyframes fadeOutLeftBig {
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
                 -webkit-transform: translate3d(-2000px, 0, 0);
                 transform: translate3d(-2000px, 0, 0);
             }
         }
-        
+
         @keyframes fadeOutLeftBig {
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
                 -webkit-transform: translate3d(-2000px, 0, 0);
                 transform: translate3d(-2000px, 0, 0);
             }
         }
-        
+
         .fadeOutLeftBig {
             -webkit-animation-name: fadeOutLeftBig;
             animation-name: fadeOutLeftBig;
         }
-        
+
         @-webkit-keyframes fadeOutRight {
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
                 -webkit-transform: translate3d(100%, 0, 0);
                 transform: translate3d(100%, 0, 0);
             }
         }
-        
+
         @keyframes fadeOutRight {
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
                 -webkit-transform: translate3d(100%, 0, 0);
                 transform: translate3d(100%, 0, 0);
             }
         }
-        
+
         .fadeOutRight {
             -webkit-animation-name: fadeOutRight;
             animation-name: fadeOutRight;
         }
-        
+
         @-webkit-keyframes fadeOutRightBig {
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
                 -webkit-transform: translate3d(2000px, 0, 0);
                 transform: translate3d(2000px, 0, 0);
             }
         }
-        
+
         @keyframes fadeOutRightBig {
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
                 -webkit-transform: translate3d(2000px, 0, 0);
                 transform: translate3d(2000px, 0, 0);
             }
         }
-        
+
         .fadeOutRightBig {
             -webkit-animation-name: fadeOutRightBig;
             animation-name: fadeOutRightBig;
         }
-        
+
         @-webkit-keyframes fadeOutUp {
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
                 -webkit-transform: translate3d(0, -100%, 0);
                 transform: translate3d(0, -100%, 0);
             }
         }
-        
+
         @keyframes fadeOutUp {
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
                 -webkit-transform: translate3d(0, -100%, 0);
                 transform: translate3d(0, -100%, 0);
             }
         }
-        
+
         .fadeOutUp {
             -webkit-animation-name: fadeOutUp;
             animation-name: fadeOutUp;
         }
-        
+
         @-webkit-keyframes fadeOutUpBig {
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
                 -webkit-transform: translate3d(0, -2000px, 0);
                 transform: translate3d(0, -2000px, 0);
             }
         }
-        
+
         @keyframes fadeOutUpBig {
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
                 -webkit-transform: translate3d(0, -2000px, 0);
                 transform: translate3d(0, -2000px, 0);
             }
         }
-        
+
         .fadeOutUpBig {
             -webkit-animation-name: fadeOutUpBig;
             animation-name: fadeOutUpBig;
         }
-        
+
         @media screen and (max-width: 768px) {
             .site-header .navbar-collapse {
                 background-color: rgba(0, 0, 0, 0.9);
@@ -697,27 +750,27 @@
                 width: 100%;
             }
         }
-        
+
         .site-header .layout-hero {
             min-height: 20vh;
         }
-        
+
         .site-header .page-section-title {
             font-size: 3em;
             font-family: var(--font-family-sans-serif);
             font-weight: bolder;
         }
-        
+
         .site-header .page-section-text {
             font-size: 1.2em;
         }
-        
+
         .h3glideup {
             width: 100%;
             text-align: center;
             align-content: center;
         }
-        
+
         .site-header {
             background-color: navy;
             background-position: center bottom;
@@ -725,47 +778,47 @@
             background-size: cover;
             height: 150px;
         }
-        
+
         .site-header .animated {
             animation-delay: 2s;
             animation-duration: 1s;
         }
-        
+
         .layout-text {
             font-size: 2.1em;
         }
-        
+
         .site-nav.inbody {
             background: var(--secondary);
         }
-        
+
         @media screen and (max-width: 768px) {
             .site-header .navbar-collapse {
                 background-color: rgba(0, 0, 0, 0.9);
                 padding: 10px;
             }
         }
-        
+
         .site-header .layout-hero {
             min-height: 20vh;
         }
-        
+
         .site-header .page-section-title {
             font-size: 3em;
             font-family: var(--font-family-sans-serif);
             font-weight: bolder;
         }
-        
+
         .site-header .page-section-text {
             font-size: 1.2em;
         }
-        
+
         .site-header .nav-link {
             position: relative;
             padding-bottom: 2px;
             margin-bottom: 2px;
         }
-        
+
         .site-header .nav-link:before {
             content: '';
             position: absolute;
@@ -779,13 +832,13 @@
             transform: scaleX(0);
             transition: all 0.3s ease-out;
         }
-        
+
         .site-header .nav-link:hover:before {
             visibility: visible;
             left: 0;
             transform: scaleX(1);
         }
-        
+
         .imgUnit {
             width: 50%;
             height: auto;
@@ -795,7 +848,7 @@
             display: inline-block;
             margin-bottom: 5px;
         }
-        
+
         .imgUnitBigger {
             width: 80%;
             height: auto;
@@ -805,11 +858,11 @@
             display: inline-block;
             margin-bottom: 5px;
         }
-        
+
         p {
             padding-right: 5px;
         }
-        
+
         .impossibleparagraph {
             padding: 5px;
             text-justify: auto;
@@ -825,7 +878,8 @@
             <div class="container-fluid">
 
 
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myTogglerNav" aria-controls="#myTogglerNav" aria-label="Toggle Navigation">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myTogglerNav"
+                    aria-controls="#myTogglerNav" aria-label="Toggle Navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -1005,23 +1059,34 @@
             </div>
         </div>
 
+
+
+
+
     </div>
 
 
     <div class="container buttons-container">
-        <a href="https://jacquikane.github.io/APCSVocab1/" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Unit Vocabulary</a>
-        <a href="https://codingbat.com/java" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Coding Bat</a>
-        <a href="https://myap.collegeboard.org/login" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">AP Classroom</a>
+        <a href="https://jacquikane.github.io/APCSVocab1/" class="btn btn-primary btn-lg active" role="button"
+            aria-pressed="true">Unit Vocabulary</a>
+        <a href="https://codingbat.com/java" class="btn btn-primary btn-lg active" role="button"
+            aria-pressed="true">Coding Bat</a>
+        <a href="https://myap.collegeboard.org/login" class="btn btn-primary btn-lg active" role="button"
+            aria-pressed="true">AP Classroom</a>
     </div>
 
 
     <!--   Modals for each unit -->
     <!-- VOCABULARY VERIFIER -->
-    <div class="modal fade modal-lg" id="vocabverifier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+
+
+
+    <div>
+        <div class="modal modal-lg" id="vocabverifier" tabindex=-1 aria-labelledby="vocabverifierLabel"
+            aria-hidden="true" role="dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Vocabulary Questions</h5>
+                    <h5 class="modal-title" id="exampleModalLabel1">Vocabulary Questions</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -1033,8 +1098,11 @@
                                 <td class="infocell" colspan="2">Primitive data types, reference types</td>
                             </tr>
                             <tr>
-                                <td><i class="material-icons custom">stars</i>How do primitive data types and reference types differ?</td>
-                                <td><i class="material-icons custom">question_answer</i>Primitives represent values, of known storage requirement. A reference is the beginning memory address of data stored in computer memory.</td>
+                                <td><i class="material-icons custom">stars</i>How do primitive data types and reference
+                                    types differ?</td>
+                                <td><i class="material-icons custom">question_answer</i>Primitives represent values, of
+                                    known storage requirement. A reference is the beginning memory address of data
+                                    stored in computer memory.</td>
                             </tr>
 
                             <tr class="trquestion">
@@ -1047,9 +1115,11 @@
                             <tr>
 
                                 <td>
-                                    <i class="material-icons custom">stars</i>Arrange the data types in order of least amount of storage: double, boolean, int</td>
+                                    <i class="material-icons custom">stars</i>Arrange the data types in order of least
+                                    amount of storage: double, boolean, int</td>
                                 <td>
-                                    <i class="material-icons custom">question_answer</i>booleans occupy a byte (8 bits) or less, ints occupy 32 bits and doubles take up 64 bits</td>
+                                    <i class="material-icons custom">question_answer</i>booleans occupy a byte (8 bits)
+                                    or less, ints occupy 32 bits and doubles take up 64 bits</td>
 
                             </tr>
                             <tr>
@@ -1058,7 +1128,8 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <i class="material-icons custom">stars</i> Associate the primitive with the correct wrapper class. <br>
+                                    <i class="material-icons custom">stars</i> Associate the primitive with the correct
+                                    wrapper class. <br>
                                     <i class="material-icons custom">stars</i>Describe <i>auto-boxing</i> and
                                     <i>un-boxing</i> as these terms relate to primitives and references.
                                 </td>
@@ -1092,7 +1163,8 @@
 
                                         </tr>
                                     </table>
-                                    <div>Integer num1 = new Integer(7);<br> num1 = 3; // Auto-boxing, Java 'boxes' the int
+                                    <div>Integer num1 = new Integer(7);<br> num1 = 3; // Auto-boxing, Java 'boxes' the
+                                        int
                                         <br> int num2 = num1; // Un-boxing, Java gets value of Integer instance</div>
                                 </td>
                             </tr>
@@ -1107,15 +1179,12 @@
 
             </div>
         </div>
-    </div>
 
 
+        <!-- CASTING -->
+        <div class="modal modal-lg" id="castthee" tabindex=-1 aria-labelledby="exampleModalLabel" aria-hidden="true"
+            role="dialog">
 
-
-
-    <!-- CASTING -->
-    <div class="modal fade modal-lg" id="castthee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Implications Of Casting</h5>
@@ -1130,13 +1199,17 @@
                                 <td class="infocell" colspan="2">Casting an int to a double</td>
                             </tr>
                             <tr>
-                                <td><i class="material-icons custom">stars</i> Casting an int to a double is a particular type of conversion - what type is it?<br>
-                                    <i class="material-icons custom">stars</i> What are the implications of casting a double to an int?
+                                <td><i class="material-icons custom">stars</i> Casting an int to a double is a
+                                    particular type of conversion - what type is it?<br>
+                                    <i class="material-icons custom">stars</i> What are the implications of casting a
+                                    double to an int?
                                 </td>
-                                <td><i class="material-icons custom">question_answer</i>Casting from an int to a double is a widening conversion, because int can store less than double.<br> int num1 = 7;
+                                <td><i class="material-icons custom">question_answer</i>Casting from an int to a double
+                                    is a widening conversion, because int can store less than double.<br> int num1 = 7;
                                     <br> double num1 = (double)num1; // Widening conversion<br>
 
-                                    <br><br> A narrowing conversion occurs when a double is cast to an int, as this means that some information might be lost. Any fractional part will be truncated.
+                                    <br><br> A narrowing conversion occurs when a double is cast to an int, as this
+                                    means that some information might be lost. Any fractional part will be truncated.
                                     <br> double num2 = 7.777;<br> int num3 = (int)num2;<br> Now, the value of num3 is 7.
 
                                 </td>
@@ -1154,14 +1227,15 @@
 
             </div>
         </div>
-    </div>
 
 
 
 
-    <!-- STRING -->
-    <div class="modal fade modal-lg" id="immutablestring" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+
+        <!-- STRING -->
+        <div class="modal modal-lg" id="immutablestring" tabindex=-1 aria-labelledby="immutablestringLabel"
+            aria-hidden="true" role="dialog">
+
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">String instances are immutable</h5>
@@ -1182,7 +1256,9 @@
                                     <i class="material-icons custom">stars</i> How are String instances initialized?<br>
                                 </td>
                                 <td>
-                                    <i class="material-icons custom">question_answer</i> String instances are objects, their value is a memory address or reference. The content of that memory address is the content of the string instance.<br> You can
+                                    <i class="material-icons custom">question_answer</i> String instances are objects,
+                                    their value is a memory address or reference. The content of that memory address is
+                                    the content of the string instance.<br> You can
                                     new up (instantiate) a String instance or you can assign a string literal.
                                     <p>
                                         String firstName = "Jane";<br> String lastName = new String("Blake");
@@ -1196,11 +1272,14 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <i class="material-icons custom">stars</i> What is the correct way to compare strings?
+                                    <i class="material-icons custom">stars</i> What is the correct way to compare
+                                    strings?
                                     <br>
                                 </td>
                                 <td>
-                                    <i class="material-icons custom">question_answer</i> Strings are objects, their value is a memory address. The content of that memory address is the content of the string instance.<br> Always use the equals method to
+                                    <i class="material-icons custom">question_answer</i> Strings are objects, their
+                                    value is a memory address. The content of that memory address is the content of the
+                                    string instance.<br> Always use the equals method to
                                     compare strings.
                                     <p>
                                         String name1 = "Jane";<br> String name2 = new String("Jane");
@@ -1216,13 +1295,18 @@
                                 <td>
                                     <i class="material-icons custom">stars</i> Can strings be changed?<br>
 
-                                    <i class="material-icons custom">stars</i> What happens when a string is passed into a method and then modified?<br>
+                                    <i class="material-icons custom">stars</i> What happens when a string is passed into
+                                    a method and then modified?<br>
                                 </td>
-                                <td><i class="material-icons custom">question_answer</i> Strings are immutable, they never change after they have been initialized. Instead, a new string instance is created.
+                                <td><i class="material-icons custom">question_answer</i> Strings are immutable, they
+                                    never change after they have been initialized. Instead, a new string instance is
+                                    created.
                                     <br>
                                     <p>
-                                        String name = "Jane";&nbsp;&nbsp;&nbsp;// this might be at memory address 0x24B76A73
-                                        <br> name = name + " Newport";&nbsp;&nbsp; // new instance, maybe memory address 0x712BD7333
+                                        String name = "Jane";&nbsp;&nbsp;&nbsp;// this might be at memory address
+                                        0x24B76A73
+                                        <br> name = name + " Newport";&nbsp;&nbsp; // new instance, maybe memory address
+                                        0x712BD7333
 
                                     </p>
                                     <p>
@@ -1241,13 +1325,21 @@
     </pre>
                                         <p>
                                             <ul>
-                                                <li>Java is <span class="oomph">Pass By Value</span> which means that only the value of a variable is passed to a method or function.
-                                                    <li>In the case of references, Java is termed <span class="oomph">Pass By Object
-                                                Reference</span>.
+                                                <li>Java is <span class="oomph">Pass By Value</span> which means that
+                                                    only the value of a variable is passed to a method or function.
+                                                <li>In the case of references, Java is termed <span class="oomph">Pass
+                                                        By Object
+                                                        Reference</span>.
 
                                             </ul>
-                                            When a reference is passed to a method, the method can access the parts of the object. However, because strings are immutable, when a string instance is modified, a new string is created. This means that the value of the string in the calling code does
-                                            not reflect any changes when the method returns. So, pName is still set to "&lt;First Name&gt;". In the example, after method changer is called, pAge does not change either and is still set to 21.</p>
+                                            When a reference is passed to a method, the method can access the parts of
+                                            the object. However, because strings are immutable, when a string instance
+                                            is modified, a new string is created. This means that the value of the
+                                            string in the calling code does
+                                            not reflect any changes when the method returns. So, pName is still set to
+                                            "&lt;First Name&gt;". In the example, after method changer is called, pAge
+                                            does not change either and is still set to 21.
+                                        </p>
                                     </p>
                                 </td>
                             </tr>
@@ -1264,13 +1356,12 @@
 
             </div>
         </div>
-    </div>
 
 
 
-    <!-- CLASSY -->
-    <div class="modal fade modal-lg" id="classy" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <!-- CLASSY -->
+        <div class="modal modal-lg center-me" id="classy" tabindex=-1 aria-labelledby="classyLabel" aria-hidden="true"
+            role="dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Classes, OOP</h5>
@@ -1288,9 +1379,11 @@
                                 <td><i class="material-icons custom">stars</i> What is a class?<br>
                                     <i class="material-icons custom">stars</i> What are class analogies?
                                 </td>
-                                <td><i class="material-icons custom">question_answer</i>A class is a software template for creating a software model, called an object.<br>
+                                <td><i class="material-icons custom">question_answer</i>A class is a software
+                                    template for creating a software model, called an object.<br>
 
-                                    <br>Think of an achitectural blueprint as a class, and the house built from this, as an object.
+                                    <br>Think of an achitectural blueprint as a class, and the house built from
+                                    this, as an object.
 
 
                                 </td>
@@ -1304,13 +1397,17 @@
                                 </td>
                                 <td>
                                     <i class="material-icons custom">question_answer</i>
-                                    <p>Object Oriented Programming (OOP) is a software engineering paradigm that uses data models called objects, as the basis of the application. Objects are created from templates called classes.</p>
+                                    <p>Object Oriented Programming (OOP) is a software engineering paradigm that
+                                        uses data models called objects, as the basis of the application. Objects
+                                        are created from templates called classes.</p>
                                     <br>
                                     <p>The 4 tenets of object oriented programming are
                                         <ul>
                                             <li>Abstraction - part of the design prcess in identifying classes</li>
-                                            <li>Polymorphism - how different objects respond in differentiated ways to the same request</li>
-                                            <li>Inheritance - the ability for one class, the subclass, to use the code base of another class, the superclass</li>
+                                            <li>Polymorphism - how different objects respond in differentiated ways
+                                                to the same request</li>
+                                            <li>Inheritance - the ability for one class, the subclass, to use the
+                                                code base of another class, the superclass</li>
                                             <li>Encapsulation - keeping data and logic subsumed within a class</li>
                                         </ul>
                                     </p>
@@ -1328,14 +1425,20 @@
                                 <td>
                                     <i class="material-icons custom">question_answer</i>
                                     <p>
-                                        A class is a software template for creating a data model called an object, or for acting as a repository for code that can be called by using the class name.
+                                        A class is a software template for creating a data model called an object,
+                                        or for acting as a repository for code that can be called by using the class
+                                        name.
                                     </p>
                                     A class is typically declared public so as to be visible to client code. </p>
                                     <p>A class defines properties called attributes. These properties are called
-                                        <span class="oomph">instance variables</span> if they apply to the instance created on instantiation. They are called <span class="oomph">class
+                                        <span class="oomph">instance variables</span> if they apply to the instance
+                                        created on instantiation. They are called <span class="oomph">class
                                             variables</span> if they apply to the class.</p>
-                                    <p>A class defines methods - these are blocks of code given a label and a return type/class, as well as an optional list of data passed into the code block -
-                                        <span class="oomph">parameters</span>. A method describes what the object can do, and can apply to an instance (instance method) or class (class method). Constructors, accessors and mutators are special methods.
+                                    <p>A class defines methods - these are blocks of code given a label and a return
+                                        type/class, as well as an optional list of data passed into the code block -
+                                        <span class="oomph">parameters</span>. A method describes what the object
+                                        can do, and can apply to an instance (instance method) or class (class
+                                        method). Constructors, accessors and mutators are special methods.
                                     </p>
                                     <pre>
 public class SoccerPlayer {
@@ -1361,7 +1464,8 @@ public class SoccerPlayer {
 
                             </td>
                             <td>
-                                <p> <i class="material-icons custom">question_answer</i> In this example, the class is SoccerPlayer, and the attributes are shown.
+                                <p> <i class="material-icons custom">question_answer</i> In this example, the class
+                                    is SoccerPlayer, and the attributes are shown.
                                     <pre>
     public class SoccerPlayer {
 
@@ -1372,8 +1476,11 @@ public class SoccerPlayer {
         private String club;
                 </pre>
 
-                                    <p>The attributes (also called properties) defined are name, position and club. These are declared <span class="oomph">private</span> by convention. This is so that they can only be accessed directly from within the object
-                                        itself. From outside, calling code uses getters and setters (accessors and mutators).
+                                    <p>The attributes (also called properties) defined are name, position and club.
+                                        These are declared <span class="oomph">private</span> by convention. This is
+                                        so that they can only be accessed directly from within the object
+                                        itself. From outside, calling code uses getters and setters (accessors and
+                                        mutators).
                                         <p>
                                             <pre>
         // Setters
@@ -1392,13 +1499,16 @@ public class SoccerPlayer {
     
                                                 </pre>
                                         </p>
-                                        <p>An instance method is called on the object or instance, and an instance variable's value is tied to the specific object. Important! An instance has to exist before an instance method can be called. </p>
+                                        <p>An instance method is called on the object or instance, and an instance
+                                            variable's value is tied to the specific object. Important! An instance
+                                            has to exist before an instance method can be called. </p>
                                         <p>
                                             <p>
                                                 SoccerPlayer player = new SoccerPlayer();
                                                 <br> player.setName("Harry Kane");
                                             </p>
-                                            <p>Variable, player, is an instance of SoccerPlayer. Attribute, name, has been set to "Harry Kane".</p>
+                                            <p>Variable, player, is an instance of SoccerPlayer. Attribute, name,
+                                                has been set to "Harry Kane".</p>
                             </td>
                             </tr>
                             <tr>
@@ -1409,9 +1519,11 @@ public class SoccerPlayer {
                                 <i class="material-icons custom">stars</i> What is a static method?<br>
                             </td>
                             <td>
-                                <p>A class, or static, method is called on the class, and a static variable's value is retained because it is associated with a class. (using the class name).</p>
+                                <p>A class, or static, method is called on the class, and a static variable's value
+                                    is retained because it is associated with a class. (using the class name).</p>
                                 <p>
-                                    <p>The keyword, <span class="oomph">static</span>, is used to indicate that the attribute or the method is bound to the class.</p>
+                                    <p>The keyword, <span class="oomph">static</span>, is used to indicate that the
+                                        attribute or the method is bound to the class.</p>
                                     <pre>
 public static int numberOfPlayers;
 </pre>
@@ -1426,13 +1538,16 @@ public static void playerRequirements() {
                                     <p>This method can be called using just the class name,<br>
                                         <br> SoccerPlayer.playerRequirements();
                                     </p>
-                                    <p>The static variable can be accessed and incremented each time a constructor is called, and the number of players created can be tallied.
+                                    <p>The static variable can be accessed and incremented each time a constructor
+                                        is called, and the number of players created can be tallied.
                                         <br><br>SoccerPlayer.numberOfPlayers += 1;
                                     </p>
 
                                 </p>
                                 <p>
-                                    The class is <span class="oomph">instantiated</span> or newed up, into an object or istance. Constructors are special methods responsible for creating an instance from a class.
+                                    The class is <span class="oomph">instantiated</span> or newed up, into an object
+                                    or istance. Constructors are special methods responsible for creating an
+                                    instance from a class.
                                 </p>
                                 </p>
                                 </p>
@@ -1446,15 +1561,19 @@ public static void playerRequirements() {
                                 <td>
                                     <i class="material-icons custom">stars</i>What's a constructor?<br>
                                     <i class="material-icons custom">stars</i> Can constructors be overloaded?<br>
-                                    <i class="material-icons custom">stars</i> What happens if no constructor is declared?
+                                    <i class="material-icons custom">stars</i> What happens if no constructor is
+                                    declared?
                                     <br>
                                 </td>
                                 <td>
-                                    <i class="material-icons custom">question_answer</i> A constructor is a special method that is instrumental in instantiating (newing up) an instance from a class. If no constructor is declared, then Java allows for
+                                    <i class="material-icons custom">question_answer</i> A constructor is a special
+                                    method that is instrumental in instantiating (newing up) an instance from a
+                                    class. If no constructor is declared, then Java allows for
                                     the defualt or empty constructor to be used.
                                     <br> SoccerPlayer player = new SoccerPlayer();
                                     <br>
-                                    <p>Once a constructor is declared, then the empty constructor must be added to the constructor declarations.</p>
+                                    <p>Once a constructor is declared, then the empty constructor must be added to
+                                        the constructor declarations.</p>
                                     <pre>
     public SoccerPlayer() { // empty constructor
     }
@@ -1481,14 +1600,13 @@ public static void playerRequirements() {
 
             </div>
         </div>
-    </div>
 
 
 
 
-    <!-- OBJECT -->
-    <div class="modal fade modal-lg" id="object" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <!-- OBJECT -->
+        <div class="modal modal-lg" id="object" tabindex=-1 aria-labelledby="objectLabel" aria-hidden="true"
+            role="dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Using Objects</h5>
@@ -1504,38 +1622,50 @@ public static void playerRequirements() {
                             </tr>
                             <tr>
                                 <td><i class="material-icons custom">stars</i>How are objects created?<br>
-                                    <i class="material-icons custom">stars</i>What is the role of the constructor?<br>
+                                    <i class="material-icons custom">stars</i>What is the role of the
+                                    constructor?<br>
                                 </td>
-                                <td><i class="material-icons custom">question_answer</i> Objects (also called instances) are newed up (instantiated) from a class definition, like SoccerPlayer, below.<br>
+                                <td><i class="material-icons custom">question_answer</i> Objects (also called
+                                    instances) are newed up (instantiated) from a class definition, like
+                                    SoccerPlayer, below.<br>
                                     <pre>
 public class SoccerPlayer {
     .....
 }
                                     </pre>
                                     <br>SoccerPlayer player = new SoccerPlayer();<br>
-                                    <br>SoccerPlayer player2 = new SoccerPlayer("Harry Kane", 27, "Striker", "Tottenham Hotspurs");
+                                    <br>SoccerPlayer player2 = new SoccerPlayer("Harry Kane", 27, "Striker",
+                                    "Tottenham Hotspurs");
                                     <br>
-                                    <p>The constructor is involved in this process, which creates space in memory for storing the new object.</p>
+                                    <p>The constructor is involved in this process, which creates space in memory
+                                        for storing the new object.</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="infocell" colspan="2">Comparing Objects</td>
                             </tr>
                             <tr>
-                                <td><i class="material-icons custom">stars</i>How can you tell if objects are the same?
+                                <td><i class="material-icons custom">stars</i>How can you tell if objects are the
+                                    same?
                                     <br>
                                     <i class="material-icons custom">stars</i>What's an alias?<br>
-                                    <i class="material-icons custom">stars</i>When are objects aliases of each other?
+                                    <i class="material-icons custom">stars</i>When are objects aliases of each
+                                    other?
                                     <br>
                                 </td>
-                                <td><i class="material-icons custom">question_answer</i> Objects are references to locations in computer memory, that contain information.
-                                    <br>SoccerPlayer player = new SoccerPlayer();<br> player.setName("Harry Kane");<br> player.setAge(27);
+                                <td><i class="material-icons custom">question_answer</i> Objects are references to
+                                    locations in computer memory, that contain information.
+                                    <br>SoccerPlayer player = new SoccerPlayer();<br> player.setName("Harry
+                                    Kane");<br> player.setAge(27);
                                     <br> player.setPosition("Striker");
                                     <br> player.setClub("Tottenham Hotspurs");<br>
                                     <br> // Using a different constructor,
-                                    <br>SoccerPlayer player2 = new SoccerPlayer("Harry Kane", 27, "Striker", "Tottenham Hotspurs");
+                                    <br>SoccerPlayer player2 = new SoccerPlayer("Harry Kane", 27, "Striker",
+                                    "Tottenham Hotspurs");
                                     <br>
-                                    <p>It looks like both players have the same information, but they do point to different memory locations. So, a comparison with the equality operaor will yield false.</p>
+                                    <p>It looks like both players have the same information, but they do point to
+                                        different memory locations. So, a comparison with the equality operaor will
+                                        yield false.</p>
 
                                     <p>In order to compare the content, an equals method is needed.
                                         <pre>
@@ -1549,7 +1679,9 @@ public boolean equals(SoccerPlayer player) {
         return false;
     }
                                         </pre> After an assignment, things change,
-                                        <br>player = player2;<br> Now, player and player2 point to the same memory location and they really are the same in every way, memory address and content. The equality operator, ==, returns true!
+                                        <br>player = player2;<br> Now, player and player2 point to the same memory
+                                        location and they really are the same in every way, memory address and
+                                        content. The equality operator, ==, returns true!
                                         <p>
                                             if (player == player2)<br> &nbsp;&nbsp;System.out.print("Aliases!!!!");
                                         </p>
@@ -1567,13 +1699,13 @@ public boolean equals(SoccerPlayer player) {
                 </div>
 
             </div>
+
         </div>
-    </div>
 
 
-    <!-- Method -->
-    <div class="modal fade modal-lg" id="method" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <!-- Method -->
+        <div class="modal modal-lg center-me" id="method" tabindex=-1 aria-labelledby="methodLabel" aria-hidden="true"
+            role="dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Understanding methods</h5>
@@ -1598,16 +1730,22 @@ public boolean equals(SoccerPlayer player) {
                                 <td>
                                     <i class="material-icons custom">question_answer</i>
                                     <p>
-                                        Methods are blocks of code, given a name, and an optional set of values to be passed in to the method from the calling code. Methods also specify what, if any, information is to be passed back from the method to the calling code. This comprises the method
+                                        Methods are blocks of code, given a name, and an optional set of values to
+                                        be passed in to the method from the calling code. Methods also specify what,
+                                        if any, information is to be passed back from the method to the calling
+                                        code. This comprises the method
                                         header.
                                     </p>
                                     <p>
-                                        &lt;(optional)accessibility modifier&gt; &lt;return type&gt; &lt;method name&gt; (&lt;parameter list &gt;(optional))
+                                        &lt;(optional)accessibility modifier&gt; &lt;return type&gt; &lt;method
+                                        name&gt; (&lt;parameter list &gt;(optional))
                                         <br> {
-                                        <br> &lt; Body of the method &gt;<br> &lt;return value;&gt;(based on return type)
+                                        <br> &lt; Body of the method &gt;<br> &lt;return value;&gt;(based on return
+                                        type)
                                         <br> &nbsp;&nbsp;&nbsp; }
                                     </p>
-                                    <p>If return type is int, then an int should be returned to the calling code. If the return type is specified as void, then no return value is expected.</p>
+                                    <p>If return type is int, then an int should be returned to the calling code. If
+                                        the return type is specified as void, then no return value is expected.</p>
                                     <pre>
 public double distanceToTopOfGoal(double distanceFromGoal) {
     double distance = Math.sqrt(Math.pow(distanceFromGoal, 2) + 
@@ -1615,7 +1753,9 @@ public double distanceToTopOfGoal(double distanceFromGoal) {
     return distance;
                                             }
                                         </pre>
-                                    <p>Above, the method is called distanceToTopOfGoal, it returns a double value to the calling code, and is accessible from client code because of the public accessibility modifier. A value, distanceFromGoal, which is of
+                                    <p>Above, the method is called distanceToTopOfGoal, it returns a double value to
+                                        the calling code, and is accessible from client code because of the public
+                                        accessibility modifier. A value, distanceFromGoal, which is of
                                         type double, is passed into the method.
                                     </p>
                                 </td>
@@ -1629,12 +1769,15 @@ public double distanceToTopOfGoal(double distanceFromGoal) {
                                 <td>
                                     <i class="material-icons custom">stars</i> What are formal parameters?<br>
                                     <i class="material-icons custom">stars</i> What are actual parameters?<br>
-                                    <i class="material-icons custom">stars</i> Does the order of the parameters matter?
+                                    <i class="material-icons custom">stars</i> Does the order of the parameters
+                                    matter?
                                     <br>
                                     <br>
                                 </td>
                                 <td>
-                                    <i class="material-icons custom">question_answer</i> In the method definition, formal parameters are the values that are specified as the values expected to be passed in, in the call. The method below, isProlificScorer,
+                                    <i class="material-icons custom">question_answer</i> In the method definition,
+                                    formal parameters are the values that are specified as the values expected to be
+                                    passed in, in the call. The method below, isProlificScorer,
                                     is defined in a class called SoccerClub, and is an instance method.
                                     <pre>
 public String isProlificScorer(int goals, String playerName) {
@@ -1652,10 +1795,12 @@ SoccerClub club = new SoccerClub();
 club.isProlificScorer(27, "Harry Kane");
                                     </pre>
                                     <p>
-                                        In the method, goals has a value of 27, and playerName is set to "Harry Kane".
+                                        In the method, goals has a value of 27, and playerName is set to "Harry
+                                        Kane".
                                     </p>
                                     <p>
-                                        The parameters are positional, which means that calling the method with,<br> club.isProlificScorer("Harry Kane", 27);
+                                        The parameters are positional, which means that calling the method with,<br>
+                                        club.isProlificScorer("Harry Kane", 27);
 
                                     </p>
                                     <p>... would result in an error!</p>
@@ -1670,15 +1815,21 @@ club.isProlificScorer(27, "Harry Kane");
                                     <i class="material-icons custom">stars</i>Are variables changed by methods?<br>
 
                                     <i class="material-icons custom">stars</i> What does 'pass by value' mean?<br>
-                                    <i class="material-icons custom">stars</i> What does 'pass by object reference' mean?
+                                    <i class="material-icons custom">stars</i> What does 'pass by object reference'
+                                    mean?
                                     <br>
                                 </td>
-                                <td><i class="material-icons custom">question_answer</i> Java is 'pass by value'. This means that only the value of variable is passed to a method, so the variable's value remains unchanged in the calling code. However, Java
-                                    is also 'pass by object reference'. This means that an object's reference (memory address) is passed to a method, and that the content of the object can be accessed and modified because of this.
+                                <td><i class="material-icons custom">question_answer</i> Java is 'pass by value'.
+                                    This means that only the value of variable is passed to a method, so the
+                                    variable's value remains unchanged in the calling code. However, Java
+                                    is also 'pass by object reference'. This means that an object's reference
+                                    (memory address) is passed to a method, and that the content of the object can
+                                    be accessed and modified because of this.
 
                                     <br>
                                     <p>
-                                        SoccerPlayer player = new SoccerPlayer();&nbsp;&nbsp;&nbsp;<br> player.setName("Harry Kane");
+                                        SoccerPlayer player = new SoccerPlayer();&nbsp;&nbsp;&nbsp;<br>
+                                        player.setName("Harry Kane");
                                         <br> int clubLeaguePosition = 5;
 
                                     </p>
@@ -1696,9 +1847,14 @@ club.isProlificScorer(27, "Harry Kane");
     </pre>
                                         <p>
                                             <ul>
-                                                <li>Java is <span class="oomph">Pass By Value</span> which means that only the value of a variable is passed to a method or function => variable, position, is still set to 1 - it has not changed.
-                                                    <li>In the case of references, Java is termed <span class="oomph">Pass By Object
-                                                Reference</span>. player's name attribute has been changed and is now "Harry Kane XXX "
+                                                <li>Java is <span class="oomph">Pass By Value</span> which means
+                                                    that only the value of a variable is passed to a method or
+                                                    function => variable, position, is still set to 1 - it has not
+                                                    changed.
+                                                <li>In the case of references, Java is termed <span class="oomph">Pass
+                                                        By Object
+                                                        Reference</span>. player's name attribute has been changed
+                                                    and is now "Harry Kane XXX "
 
                                             </ul>
 
@@ -1716,7 +1872,9 @@ club.isProlificScorer(27, "Harry Kane");
                                     <i class="material-icons custom">stars</i> What's an instance method?<br>
                                 </td>
                                 <td>
-                                    <i class="material-icons custom">question_answer</i> Static methods are also known as class methods because they are bound to the class, not the object. Static methods are declared with key word, static.
+                                    <i class="material-icons custom">question_answer</i> Static methods are also
+                                    known as class methods because they are bound to the class, not the object.
+                                    Static methods are declared with key word, static.
                                     <p>
                                         public class SoccerClub {<br> ...
                                         <br> &nbsp;&nbsp;&nbsp;public static soccerMotto() {...}<br><br> }
@@ -1728,7 +1886,8 @@ club.isProlificScorer(27, "Harry Kane");
                                         public class SoccerClub {<br> ...
                                         <br> &nbsp;&nbsp;&nbsp;public static soccerMotto() {...}<br><br> }
                                         <br><br> SoccerClub.soccerMotto();
-                                        <br> public listPlayers() {...}<br><br> SoccerClub club = new SoccerClub();<br> club.listPlayers();
+                                        <br> public listPlayers() {...}<br><br> SoccerClub club = new
+                                        SoccerClub();<br> club.listPlayers();
                                         <br>
                                     </p>
                                 </td>
@@ -1742,15 +1901,15 @@ club.isProlificScorer(27, "Harry Kane");
                 </div>
 
             </div>
+
         </div>
-    </div>
 
 
 
 
-    <!-- DIGITAL LOGIC -->
-    <div class="modal fade modal-lg" id="digitallogic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <!-- DIGITAL LOGIC -->
+        <div class="modal modal-lg" id="digitallogic" tabindex=-1 aria-labelledby="digitallogicLabel" aria-hidden="true"
+            role="dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Logic behind evaluation and comparisons</h5>
@@ -1767,18 +1926,20 @@ club.isProlificScorer(27, "Harry Kane");
                             <tr>
                                 <td><i class="material-icons custom">stars</i>What is Boolean Logic?<br>
                                     <i class="material-icons custom">stars</i>Is there a boolean data type?
-                                    <td>
-                                        <i class="material-icons custom">question_answer</i>
-                                        <p>Boolean logic is a branch of mathematics devleoped by mathematician George Boole, in the 1800s.</p>
-                                        <p>Primitive data type, boolean, and wrapper class, Boolean, represent boolean values of true or false only.</p>
-                                        <p>
-                                            <pre>
+                                <td>
+                                    <i class="material-icons custom">question_answer</i>
+                                    <p>Boolean logic is a branch of mathematics devleoped by mathematician George
+                                        Boole, in the 1800s.</p>
+                                    <p>Primitive data type, boolean, and wrapper class, Boolean, represent boolean
+                                        values of true or false only.</p>
+                                    <p>
+                                        <pre>
     boolean isReady = false;
     Boolean isComplete = new Boolean(true);
     Boolean isHere = true; // Auto-boxing
                                             </pre> The boolean data type has associated storage of a byte or less.
-                                        </p>
-                                    </td>
+                                    </p>
+                                </td>
 
                             </tr>
 
@@ -1792,9 +1953,12 @@ club.isProlificScorer(27, "Harry Kane");
                             <tr>
 
                                 <td>
-                                    <i class="material-icons custom">stars</i>What Boolean operators are important?</td>
+                                    <i class="material-icons custom">stars</i>What Boolean operators are important?
+                                </td>
                                 <td>
-                                    <i class="material-icons custom">question_answer</i> There are more Boolean operators, but the 3 basic Boolean operators are AND, OR and NOT. The other operators are composed of these three.
+                                    <i class="material-icons custom">question_answer</i> There are more Boolean
+                                    operators, but the 3 basic Boolean operators are AND, OR and NOT. The other
+                                    operators are composed of these three.
                                     <p>
                                         <table>
                                             <tr>
@@ -1820,14 +1984,19 @@ club.isProlificScorer(27, "Harry Kane");
                             </tr>
                             <tr>
                                 <td>
-                                    <i class="material-icons custom">stars</i>What are simple Boolean expressions?<br>
+                                    <i class="material-icons custom">stars</i>What are simple Boolean
+                                    expressions?<br>
                                     <i class="material-icons custom">stars</i>What are compound Boolean expressions?
                                 </td>
                                 <td>
-                                    <i class="material-icons custom">question_answer</i> Boolean expressions evaluate to either true or false. Compound Boolean expressions are Boolean expressions that are joined by Boolean operators, and also evaluate
+                                    <i class="material-icons custom">question_answer</i> Boolean expressions
+                                    evaluate to either true or false. Compound Boolean expressions are Boolean
+                                    expressions that are joined by Boolean operators, and also evaluate
                                     to true or false.
                                     <p>
-                                        int val1 = 3;<br> int val2 = 3;<br> boolean areEqual = (val1 == val2);<br> serviced = true;<br> sanitized = false;<br> boolean roomReady = serviced && sanitized;
+                                        int val1 = 3;<br> int val2 = 3;<br> boolean areEqual = (val1 == val2);<br>
+                                        serviced = true;<br> sanitized = false;<br> boolean roomReady = serviced &&
+                                        sanitized;
                                     </p>
 
                                 </td>
@@ -1841,19 +2010,25 @@ club.isProlificScorer(27, "Harry Kane");
                             <tr>
                                 <td>
                                     <i class="material-icons custom">stars</i>What is a truth table?<br>
-                                    <i class="material-icons custom">stars</i>How do truth tables help evaluate Boolean expressions?
+                                    <i class="material-icons custom">stars</i>How do truth tables help evaluate
+                                    Boolean expressions?
                                 </td>
                                 <td>
                                     <i class="material-icons custom">question_answer</i>
-                                    <p>Truth tables show the result of evaluating a Boolean expression with 2 (or more) operands. Here are truth tables for the three basic boolean operations - AND, OR, NOT.
+                                    <p>Truth tables show the result of evaluating a Boolean expression with 2 (or
+                                        more) operands. Here are truth tables for the three basic boolean operations
+                                        - AND, OR, NOT.
                                     </p>
                                     <div> <img class="imgUnit" src="images/boolean1.png">
                                         <img class="imgUnit" src="images/boolean2.png">
                                         <img class="imgUnit" src="images/boolean3.png"></div>
 
                                     <p style="padding-top: 5px;">
-                                        Given Boolean variables isA and isB,<br> isA && isB is true only when both isA and isB are true, false otherwise.<br> isA || isB is false only when both isA and isB are false.<br><br> isA and isB are set to false
-                                        and true respectively<br><br> isA && isB is false<br> isA || isB is true<br> !(isA) is true, because isA is false.<br>
+                                        Given Boolean variables isA and isB,<br> isA && isB is true only when both
+                                        isA and isB are true, false otherwise.<br> isA || isB is false only when
+                                        both isA and isB are false.<br><br> isA and isB are set to false
+                                        and true respectively<br><br> isA && isB is false<br> isA || isB is true<br>
+                                        !(isA) is true, because isA is false.<br>
                                     </p>
 
                                 </td>
@@ -1866,7 +2041,8 @@ club.isProlificScorer(27, "Harry Kane");
                             </tr>
                             <tr>
                                 <td>
-                                    <i class="material-icons custom">stars</i>What digital logic gates represent Boolean operations?
+                                    <i class="material-icons custom">stars</i>What digital logic gates represent
+                                    Boolean operations?
                                     <br>
                                 </td>
                                 <td>
@@ -1885,7 +2061,8 @@ club.isProlificScorer(27, "Harry Kane");
                                     <img class="imgUnit" src="images/not.png">
 
                                     <p style="padding-top: 5px;">
-                                        These gates can be viewed in the same way as truth tables, with operands and an output.
+                                        These gates can be viewed in the same way as truth tables, with operands and
+                                        an output.
                                     </p>
 
                                 </td>
@@ -1897,7 +2074,8 @@ club.isProlificScorer(27, "Harry Kane");
                                 </td>
                             </tr>
                             <tr>
-                                <td> <i class="material-icons custom">stars</i>Can Boolean expressions be short-circuited?
+                                <td> <i class="material-icons custom">stars</i>Can Boolean expressions be
+                                    short-circuited?
                                     <br>
                                     <i class="material-icons custom">stars</i>What is De Morgan's Law?<br>
                                     <i class="material-icons custom">stars</i>How is De Morgan's Law useful?<br>
@@ -1905,11 +2083,15 @@ club.isProlificScorer(27, "Harry Kane");
                                 <td>
                                     <i class="material-icons custom">question_answer</i>
                                     <p>Compound Boolean expression may not have to be fully evaluated, they may be
-                                        <i>short-circuited</i>. If the first expression in an AND operation is false, then stop right there - the expression is false. If the first expression in an OR is true, the same principal applies, as the expression
+                                        <i>short-circuited</i>. If the first expression in an AND operation is
+                                        false, then stop right there - the expression is false. If the first
+                                        expression in an OR is true, the same principal applies, as the expression
                                         must be true.
                                         <br> int goals = 7;<br> int goalScoringThreshold = 15;<br>
-                                        <br> if (goals &gt; goalScoringThreshold) && ...... // Java stops here as the expression must be false <br>
-                                        <br> if (goals &lt; goalScoringThreshold) || ..... // Java stops here as the ex[ression must be true]
+                                        <br> if (goals &gt; goalScoringThreshold) && ...... // Java stops here as
+                                        the expression must be false <br>
+                                        <br> if (goals &lt; goalScoringThreshold) || ..... // Java stops here as the
+                                        ex[ression must be true]
                                         <br>
                                     </p>
                                     <p>
@@ -1920,7 +2102,8 @@ club.isProlificScorer(27, "Harry Kane");
                                     <h6>!(a || b) &lt;=&gt; !a && !b</h6>
 
                                     <p style="padding-top: 5px;">
-                                        De Morgan's law can be applied to more complex expressions. This helps to simplify the evaluation and determine the outcome.
+                                        De Morgan's law can be applied to more complex expressions. This helps to
+                                        simplify the evaluation and determine the outcome.
                                     </p>
                                     <pre>
     ! ( ( a || !b)  &&  (a && b) )
@@ -1952,13 +2135,11 @@ club.isProlificScorer(27, "Harry Kane");
 
             </div>
         </div>
-    </div>
 
 
 
-    <!-- CONDITIONALS -->
-    <div class="modal fade modal-lg" id="iffy" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <!-- CONDITIONALS -->
+        <div class="modal modal-lg" id="iffy" tabindex=-1 aria-labelledby="iffyLabel" aria-hidden="true" role="dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">The Conditional, If statement</h5>
@@ -1978,7 +2159,8 @@ club.isProlificScorer(27, "Harry Kane");
 
                                 </td>
                                 <td><i class="material-icons custom">question_answer</i>
-                                    <p><i>If statements, conditionals</i> support making decisions based on the value of a Boolean expression, or condition. </p>
+                                    <p><i>If statements, conditionals</i> support making decisions based on the
+                                        value of a Boolean expression, or condition. </p>
                                 </td>
                             </tr>
 
@@ -1986,9 +2168,11 @@ club.isProlificScorer(27, "Harry Kane");
                                 <td class="infocell" colspan="2">One way selection statment</td>
                             </tr>
                             <tr>
-                                <td><i class="material-icons custom">stars</i> Why would a one way selection statement be used?<br></td>
+                                <td><i class="material-icons custom">stars</i> Why would a one way selection
+                                    statement be used?<br></td>
                                 <td><i class="material-icons custom">question_answer</i>
-                                    <p>A one way selection statement is used when action should be taken based on a Boolean expression's truth, and no action otherwise.</p>
+                                    <p>A one way selection statement is used when action should be taken based on a
+                                        Boolean expression's truth, and no action otherwise.</p>
                                     <pre>
 int goals = 4; 
 int goalScoringThreshold = 15; 
@@ -2005,9 +2189,12 @@ if (goals &gt; goalScoringThreshold) {
                                 <td class="infocell" colspan="2">Two way selection statment</td>
                             </tr>
                             <tr>
-                                <td><i class="material-icons custom">stars</i> Why would a two way selection statement be used?<br></td>
+                                <td><i class="material-icons custom">stars</i> Why would a two way selection
+                                    statement be used?<br></td>
                                 <td><i class="material-icons custom">question_answer</i>
-                                    <p>A two way selection statement is used when action should be taken based on a Boolean expression's truth, and another action should be taken based on the expression being false.</p>
+                                    <p>A two way selection statement is used when action should be taken based on a
+                                        Boolean expression's truth, and another action should be taken based on the
+                                        expression being false.</p>
                                     <pre>
 int goals = 4; 
 int goalScoringThreshold = 15; 
@@ -2029,12 +2216,16 @@ else {
                                 <td class="infocell" colspan="2">Multi way selection statment</td>
                             </tr>
                             <tr>
-                                <td><i class="material-icons custom">stars</i> Why would a multi-way way selection statement be used?<br>
-                                    <i class="material-icons custom">stars</i> Why is it better to use if/else if../else instead of a sequence of if statements?
+                                <td><i class="material-icons custom">stars</i> Why would a multi-way way selection
+                                    statement be used?<br>
+                                    <i class="material-icons custom">stars</i> Why is it better to use if/else
+                                    if../else instead of a sequence of if statements?
                                     <br>
                                 </td>
                                 <td><i class="material-icons custom">question_answer</i>
-                                    <p>A multi way selection statement is used when different actions should be taken based on a Boolean expression's truth, such as the value of a discrete quantity, like goals scored by a soccer player this season.</p>
+                                    <p>A multi way selection statement is used when different actions should be
+                                        taken based on a Boolean expression's truth, such as the value of a discrete
+                                        quantity, like goals scored by a soccer player this season.</p>
                                     <pre>
 int goals = 4; 
 int goalScoringThreshold = 15; 
@@ -2060,11 +2251,16 @@ else {
                             </tr>
                             <tr>
                                 <td>
-                                    <i class="material-icons custom">stars</i> Why is it better to use if/else if../else instead of a sequence of if statements?<br>
+                                    <i class="material-icons custom">stars</i> Why is it better to use if/else
+                                    if../else instead of a sequence of if statements?<br>
                                 </td>
                                 <td><i class="material-icons custom">question_answer</i>
-                                    <p>When one of the conditions is true, the code associated with the condition is executed. After a branch executes, control flows away from the if statement. Where the value of a variable has not changed, it is inefficient
-                                        to use a sequence of singleton if statements. This is because a condition that is true has already been found. There is no point in evaluating all the other possibities.
+                                    <p>When one of the conditions is true, the code associated with the condition is
+                                        executed. After a branch executes, control flows away from the if statement.
+                                        Where the value of a variable has not changed, it is inefficient
+                                        to use a sequence of singleton if statements. This is because a condition
+                                        that is true has already been found. There is no point in evaluating all the
+                                        other possibities.
                                     </p>
 
                                     <pre>
@@ -2102,66 +2298,79 @@ if (goals &lt; 5) {
 
 
     <!-- Loops -->
-    <div class="modal fade modal-lg" id="loops" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">How loops work</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <table class="tablequestion question-table">
-                        <tbody>
-                            <tr>
-                                <td class="infocell" colspan="2">Intent of loops
-                                </td>
-                            </tr>
+    <div class="modal modal-lg center-me" id="loops" tabindex=-1 aria-labelledby="loopsLabel" aria-hidden="true"
+        role="dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">How loops work</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="tablequestion question-table">
+                    <tbody>
+                        <tr>
+                            <td class="infocell" colspan="2">Intent of loops
+                            </td>
+                        </tr>
 
-                            <tr>
-                                <td>
-                                    <i class="material-icons custom">stars</i> What's the purpose of a loop?<br>
-                                    <i class="material-icons custom">stars</i> What does iteration mean?<br>
-                                    <i class="material-icons custom">stars</i> What terms are associated with a loop?
-                                    <br>
-                                    <i class="material-icons custom">stars</i> When are loops required?<br>
-                                </td>
-                                <td>
-                                    <i class="material-icons custom">question_answer</i>
+                        <tr>
+                            <td>
+                                <i class="material-icons custom">stars</i> What's the purpose of a loop?<br>
+                                <i class="material-icons custom">stars</i> What does iteration mean?<br>
+                                <i class="material-icons custom">stars</i> What terms are associated with a
+                                loop?
+                                <br>
+                                <i class="material-icons custom">stars</i> When are loops required?<br>
+                            </td>
+                            <td>
+                                <i class="material-icons custom">question_answer</i>
 
-                                    <p>Loops are structures that support repetitive execution of a sequence of commands, like adding compound interest to a bank account, or printing the times tables.
-                                    </p>
-                                    <p>Loops are useful when a set of commands should be repeated, either infinitely or a set number of times.</p>
-                                    <p>A common term used to represent looping is <i>iteration</i>, as in, a loop might
-                                        <i>iterate</i> or repeat x amount of times. The body of the loop describes code that is executed each time through the loop. A special variable called a loop variable, sentry variable or control variable guards
-                                        access to the loop by virtue of being used in a loop condition. The loop condition determines access to and continued execution of the loop - when the loop condition is no longer true, the loop exits.</p>
-                                    <br>
-                                    <pre>
+                                <p>Loops are structures that support repetitive execution of a sequence of
+                                    commands, like adding compound interest to a bank account, or printing the
+                                    times tables.
+                                </p>
+                                <p>Loops are useful when a set of commands should be repeated, either infinitely
+                                    or a set number of times.</p>
+                                <p>A common term used to represent looping is <i>iteration</i>, as in, a loop
+                                    might
+                                    <i>iterate</i> or repeat x amount of times. The body of the loop describes
+                                    code that is executed each time through the loop. A special variable called
+                                    a loop variable, sentry variable or control variable guards
+                                    access to the loop by virtue of being used in a loop condition. The loop
+                                    condition determines access to and continued execution of the loop - when
+                                    the loop condition is no longer true, the loop exits.</p>
+                                <br>
+                                <pre>
     while (condition is true) 
         statements in body of loop
                                         </pre>
 
-                                </td>
+                            </td>
 
-                            </tr>
-                            <tr>
-                                <td class="infocell" colspan="2">While loop
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <i class="material-icons custom">stars</i> How is a while loop structured?<br>
-                                    <i class="material-icons custom">stars</i> When does a while loop become an infinite loop?
-                                    <br>
-                                    <i class="material-icons custom">stars</i> How many times does a while loop execute?
-                                    <br>
-                                    <br>
-                                </td>
-                                <td>
-                                    <i class="material-icons custom">question_answer</i> A while loop is a type of loop characterized by key word,
-                                    <i>while</i> , a loop condition and statements in the body of the loop, executed each time the loop iterates.
-                                    <pre>
+                        </tr>
+                        <tr>
+                            <td class="infocell" colspan="2">While loop
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="material-icons custom">stars</i> How is a while loop structured?<br>
+                                <i class="material-icons custom">stars</i> When does a while loop become an
+                                infinite loop?
+                                <br>
+                                <i class="material-icons custom">stars</i> How many times does a while loop
+                                execute?
+                                <br>
+                                <br>
+                            </td>
+                            <td>
+                                <i class="material-icons custom">question_answer</i> A while loop is a type of
+                                loop characterized by key word,
+                                <i>while</i> , a loop condition and statements in the body of the loop, executed
+                                each time the loop iterates.
+                                <pre>
 
 int itemNumber = 1;
 while (itemNumber &lt; MAX_ITEMS) {
@@ -2170,114 +2379,128 @@ while (itemNumber &lt; MAX_ITEMS) {
    itemNumber++;
    }
                                   </pre>
+                                <br>
+                                <table>
+                                    <tr>
+                                        <td>int itemNumber = 1;</td>
+                                        <td>Optional loop initialization</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <pre>while (itemNumber &lt; MAX_ITEMS) </pre>
+                                        </td>
+                                        <td>key word, while, loop condition. Note sentry variable, itemNumber
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>System.out.println("..."");
+                                            <br>processItem(itemNumber);
+                                            <br>itemNumber++;
+                                        </td>
+                                        <td>Statements in the body of the loop. Note increment of itemNumber
+                                        </td>
+                                    </tr>
+                                </table>
+
+
+
+
+                                <br>
+
+                                <p>
+                                    The while loop executes until the loop condition is false. If MAX_ITEMS is
+                                    10, then the loop executes for values of itemNumber of 1,2,3,4,5,6,7,8,9.
+                                    This is 9 times in total.
+                                </p>
+                                <p>If the loop variable, itemNumber, is not incremented in the body of the loop,
+                                    then the loop will be an infinite loop because the loop condition, which is
+                                    that itemNumber be less than MAX_ITEMS, is always true.</p>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="infocell" colspan="2">For loop
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="material-icons custom">stars</i> How is a for loop structured?<br>
+                                <i class="material-icons custom">stars</i> When does a for loop become an
+                                infinite loop?
+                                <br>
+                                <i class="material-icons custom">stars</i> How many times does a for loop
+                                execute?
+                                <i class="material-icons custom">stars</i> Is it necessary to include all parts
+                                of the for loop?
+                                <br>
+                                <br>
+                            </td>
+                            <td><i class="material-icons custom">question_answer</i>
+                                <br>
+                                <p>
+                                    The for loop is characterized by key word, <i>for</i>, an optional
+                                    initialization part, a loop condition, and an optional loop statement.
+
+                                </p>
+                                <p>
                                     <br>
-                                    <table>
-                                        <tr>
-                                            <td>int itemNumber = 1;</td>
-                                            <td>Optional loop initialization</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <pre>while (itemNumber &lt; MAX_ITEMS) </pre>
-                                            </td>
-                                            <td>key word, while, loop condition. Note sentry variable, itemNumber</td>
-                                        </tr>
-                                        <tr>
-                                            <td>System.out.println("..."");
-                                                <br>processItem(itemNumber);
-                                                <br>itemNumber++;
-                                            </td>
-                                            <td>Statements in the body of the loop. Note increment of itemNumber</td>
-                                        </tr>
-                                    </table>
-
-
-
-
-                                    <br>
-
-                                    <p>
-                                        The while loop executes until the loop condition is false. If MAX_ITEMS is 10, then the loop executes for values of itemNumber of 1,2,3,4,5,6,7,8,9. This is 9 times in total.
-                                    </p>
-                                    <p>If the loop variable, itemNumber, is not incremented in the body of the loop, then the loop will be an infinite loop because the loop condition, which is that itemNumber be less than MAX_ITEMS, is always true.</p>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="infocell" colspan="2">For loop
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <i class="material-icons custom">stars</i> How is a for loop structured?<br>
-                                    <i class="material-icons custom">stars</i> When does a for loop become an infinite loop?
-                                    <br>
-                                    <i class="material-icons custom">stars</i> How many times does a for loop execute?
-                                    <i class="material-icons custom">stars</i> Is it necessary to include all parts of the for loop?
-                                    <br>
-                                    <br>
-                                </td>
-                                <td><i class="material-icons custom">question_answer</i>
-                                    <br>
-                                    <p>
-                                        The for loop is characterized by key word, <i>for</i>, an optional initialization part, a loop condition, and an optional loop statement.
-
-                                    </p>
-                                    <p>
-                                        <br>
-                                        <pre>
+                                    <pre>
 for (int itemNumber = 1; itemNumber &lt; MAX_ITEMS; itemNumber++) {
     System.out.println("Processing item number " + itemNumber); 
     processItem(itemNumber);
 }
         
     </pre>
-                                    </p>
+                                </p>
 
-                                    <table>
+                                <table>
 
-                                        <tr>
-                                            <td>
-                                                <pre>for (int itemNumber = 1; itemNumber &lt; MAX_ITEMS; itemNumber++)</pre>
-                                            </td>
-                                            <td>key word, <i>for</i>, optional initialization of loop variable, itemNumber, loop condition and optional loop statement with increment of the loop variable, itemNumber.
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>System.out.println("...");<br>
-                                                <br>processItem(itemNumber);
-                                            </td>
-                                            <td>Statements in the body of the loop. </td>
-                                        </tr>
-                                    </table>
-                                    <br>
-                                    <p>The initialization part can be done prior to the for loop, and the loop statement can be left out. The loop could be written
-                                        <pre>
+                                    <tr>
+                                        <td>
+                                            <pre>for (int itemNumber = 1; itemNumber &lt; MAX_ITEMS; itemNumber++)</pre>
+                                        </td>
+                                        <td>key word, <i>for</i>, optional initialization of loop variable,
+                                            itemNumber, loop condition and optional loop statement with
+                                            increment of the loop variable, itemNumber.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>System.out.println("...");<br>
+                                            <br>processItem(itemNumber);
+                                        </td>
+                                        <td>Statements in the body of the loop. </td>
+                                    </tr>
+                                </table>
+                                <br>
+                                <p>The initialization part can be done prior to the for loop, and the loop
+                                    statement can be left out. The loop could be written
+                                    <pre>
 int itemNumber = 1;
 for ( ; itemNumber &lt; MAX_ITEMS;) {
    processItem(itemNumber);
    itemNumber++;
 }
                                     </pre>
-                                    </p>
-                                    <p>The for loop runs as long as the loop condition is true. If MAX_ITEMS has a value of 10, the loop iterates through values for itemNumber of 1,2,3,4,5,6,7,8,9. This is a total of 9 iterations.
-                                    </p>
-                                </td>
-                            </tr>
+                                </p>
+                                <p>The for loop runs as long as the loop condition is true. If MAX_ITEMS has a
+                                    value of 10, the loop iterates through values for itemNumber of
+                                    1,2,3,4,5,6,7,8,9. This is a total of 9 iterations.
+                                </p>
+                            </td>
+                        </tr>
 
 
 
 
-                        </tbody>
-                    </table>
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+                    </tbody>
+                </table>
 
             </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
         </div>
     </div>
 
@@ -2287,43 +2510,48 @@ for ( ; itemNumber &lt; MAX_ITEMS;) {
 
 
     <!-- Nested Structures -->
-    <div class="modal fade modal-lg" id="nested" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nested conditionals, nested loops</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <table class="tablequestion question-table">
-                        <tbody>
-                            <tr>
-                                <td class="infocell" colspan="2">Nested Conditionals
-                                </td>
-                            </tr>
+    <div class="modal modal-lg center-me" id="nested" tabindex=-1 aria-labelledby="nestedLabel" aria-hidden="true"
+        role="dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nested conditionals, nested loops</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="tablequestion question-table">
+                    <tbody>
+                        <tr>
+                            <td class="infocell" colspan="2">Nested Conditionals
+                            </td>
+                        </tr>
 
-                            <tr>
-                                <td>
-                                    <i class="material-icons custom">stars</i> What are nested conditionals?<br>
-                                    <i class="material-icons custom">stars</i> What's the purpose of a nested conditional?
-                                    <br>
-                                    <i class="material-icons custom">stars</i> Can a nested conditional be represented as a compound condition?<br>
-                                    <br>
-                                    <i class="material-icons custom">stars</i> When are nested conditionals required?
-                                    <br>
-                                </td>
-                                <td>
-                                    <i class="material-icons custom">question_answer</i>
+                        <tr>
+                            <td>
+                                <i class="material-icons custom">stars</i> What are nested conditionals?<br>
+                                <i class="material-icons custom">stars</i> What's the purpose of a nested
+                                conditional?
+                                <br>
+                                <i class="material-icons custom">stars</i> Can a nested conditional be
+                                represented as a compound condition?<br>
+                                <br>
+                                <i class="material-icons custom">stars</i> When are nested conditionals
+                                required?
+                                <br>
+                            </td>
+                            <td>
+                                <i class="material-icons custom">question_answer</i>
 
-                                    <p>Nested conditionals are conditionals inside other conditionals.
-                                    </p>
-                                    <p>Nested ifs, or nested conditionals, represent a compound condition, like, ascertaining first if a soccer player is a goal keeper, and then figuring out if the player should be on the junior team or the senior team,
-                                        based on age.</p>
+                                <p>Nested conditionals are conditionals inside other conditionals.
+                                </p>
+                                <p>Nested ifs, or nested conditionals, represent a compound condition, like,
+                                    ascertaining first if a soccer player is a goal keeper, and then figuring
+                                    out if the player should be on the junior team or the senior team,
+                                    based on age.</p>
 
-                                    <p>Given SoccerPlayer object, player,</p>
-                                    <pre>
+                                <p>Given SoccerPlayer object, player,</p>
+                                <pre>
 if (player.isGoalKeeper()) {
     if (player.getAge() >= 21) {
         System.out.println("Put player " + player.getName()) + 
@@ -2338,9 +2566,9 @@ else {
     System.out.println("Player is not a goal keeper"); 
 }
                                                 </pre>
-                                    </p>
-                                    <p>This could also be done by using a compound condition,
-                                        <pre>
+                                </p>
+                                <p>This could also be done by using a compound condition,
+                                    <pre>
 if ((player.isGoalKeeper()) && (player.getAge() >= 21)) {
     System.out.println("Put player " + player.getName()) + 
                        " on the senior team as a goal keeper"); 
@@ -2353,31 +2581,35 @@ else {
     System.out.println("Player is not a goal keeper"); 
      }
                                                 </pre>
-                                    </p>
-                                    <p>Nested conditions can be used in staggerred evaluations, like the one presented above. Typically, a compound condition or a series of compound conditions can be used in the place of a nested if.</p>
+                                </p>
+                                <p>Nested conditions can be used in staggerred evaluations, like the one
+                                    presented above. Typically, a compound condition or a series of compound
+                                    conditions can be used in the place of a nested if.</p>
 
 
-                                </td>
+                            </td>
 
-                            </tr>
-                            <tr>
-                                <td class="infocell" colspan="2">Nested loop
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <i class="material-icons custom">stars</i> What is a nested loop?<br>
-                                    <i class="material-icons custom">stars</i> When is a nested loop required?
-                                    <br>
-                                    <br>
-                                    <br>
-                                </td>
-                                <td>
-                                    <i class="material-icons custom">question_answer</i>
-                                    <p>A nested loop is a loop within another loop.</p>
-                                    <p>A nested loop is required for processing a set of data in an inner loop for each value in an outer loop. An example would be processing blood work in a hospital for each patient in a ward full of patients with a common
-                                        ailment and all patients requiring a set number of tests.</p>
-                                    <pre>
+                        </tr>
+                        <tr>
+                            <td class="infocell" colspan="2">Nested loop
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="material-icons custom">stars</i> What is a nested loop?<br>
+                                <i class="material-icons custom">stars</i> When is a nested loop required?
+                                <br>
+                                <br>
+                                <br>
+                            </td>
+                            <td>
+                                <i class="material-icons custom">question_answer</i>
+                                <p>A nested loop is a loop within another loop.</p>
+                                <p>A nested loop is required for processing a set of data in an inner loop for
+                                    each value in an outer loop. An example would be processing blood work in a
+                                    hospital for each patient in a ward full of patients with a common
+                                    ailment and all patients requiring a set number of tests.</p>
+                                <pre>
 
     int patientNumber = 1;
     while (patientNumber &lt; MAX_PATIENTS) {
@@ -2388,10 +2620,11 @@ else {
            }
         }
                                       </pre>
-                                    <br>
-                                    <p>A nested while loop can be mirrored with a nested for loop, and for loops can exist inside while loops and vice versa.</p>
+                                <br>
+                                <p>A nested while loop can be mirrored with a nested for loop, and for loops can
+                                    exist inside while loops and vice versa.</p>
 
-                                    <pre>
+                                <pre>
 
     for (patientNumber = 1; patientNumber &lt; MAX_PATIENTS; patientNumber++) {
         for (testNumber = 1; testNumber &lt;= TESTS_REQUIRED_COUNT; testNumber++)
@@ -2401,30 +2634,34 @@ else {
         }
 
                                         </pre>
-                                </td>
+                            </td>
 
-                            </tr>
-                            <tr>
-                                <td class="infocell" colspan="2">Nested loop execution
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <i class="material-icons custom">stars</i> How many times does a nested loop run?<br>
-                                    <i class="material-icons custom">stars</i> Can a nested loop be an infinite loop?
-                                    <br>
+                        </tr>
+                        <tr>
+                            <td class="infocell" colspan="2">Nested loop execution
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="material-icons custom">stars</i> How many times does a nested loop
+                                run?<br>
+                                <i class="material-icons custom">stars</i> Can a nested loop be an infinite
+                                loop?
+                                <br>
 
-                                    <br>
-                                </td>
-                                <td><i class="material-icons custom">question_answer</i>
-                                    <br>
-                                    <p>
-                                        A nested loop runs for all sentry variable values in the outer loop, and for each value of the outer loop's sentry variable, for all values of the inner loop's sentry variable. The times tables is a good way to see this.
+                                <br>
+                            </td>
+                            <td><i class="material-icons custom">question_answer</i>
+                                <br>
+                                <p>
+                                    A nested loop runs for all sentry variable values in the outer loop, and for
+                                    each value of the outer loop's sentry variable, for all values of the inner
+                                    loop's sentry variable. The times tables is a good way to see this.
 
-                                    </p>
-                                    <p>
-                                        <br>
-                                        <pre>
+                                </p>
+                                <p>
+                                    <br>
+                                    <pre>
     for (int factor1 = 1; factor1 &lt; 13; factor1++) {
         for (int factor2 = 1; factor2 &lt; 13; factor2++) {
           System.out.println(factor1 + " x " + factor2 + 
@@ -2433,28 +2670,31 @@ else {
     }
             
         </pre> This produces,
-                                        <pre>
+                                    <pre>
             1 x 1 = 1
             
             to
             
             12 x 12 = 144
         </pre>
-                                    </p>
-                                    <p>For each of the 12 values, 1,2,3,4,5,6,7,8,9,10,11,12, in the outer loop, the inner loop also runs 12 times. The body of the inner loop is executed 12 by 12 times in total, which is 144.</p>
-                                    <p>A nested loop can easily become an infinite loop if either the outer loop condition does not ever become false, or if the inner loop condition does not ever become false.</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+                                </p>
+                                <p>For each of the 12 values, 1,2,3,4,5,6,7,8,9,10,11,12, in the outer loop, the
+                                    inner loop also runs 12 times. The body of the inner loop is executed 12 by
+                                    12 times in total, which is 144.</p>
+                                <p>A nested loop can easily become an infinite loop if either the outer loop
+                                    condition does not ever become false, or if the inner loop condition does
+                                    not ever become false.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
             </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
         </div>
     </div>
 
@@ -2462,28 +2702,31 @@ else {
 
 
     <!-- SWAPPING VALUES -->
-    <div class="modal fade modal-lg" id="swapping" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Swapping values</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <table class="tablequestion question-table">
-                        <tbody>
-                            <tr>
-                                <td class="infocell" colspan="2">Swapping primitive variable values</td>
-                            </tr>
-                            <tr>
-                                <td><i class="material-icons custom">stars</i>How do primitive type variable assignments cause values to change?<br>
-                                    <i class="material-icons custom">stars</i>Does the order of assignments matter?<br></td>
-                                <td><i class="material-icons custom">question_answer</i>
-                                    <p>Assignments between variables cause changes in the current values of the variables.</p>
-                                    <p>
-                                        <pre>
+    <div class="modal modal-lg center-me" id="swapping" tabindex=-1 aria-labelledby="swappingLabel" aria-hidden="true"
+        role="dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Swapping values</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="tablequestion question-table">
+                    <tbody>
+                        <tr>
+                            <td class="infocell" colspan="2">Swapping primitive variable values</td>
+                        </tr>
+                        <tr>
+                            <td><i class="material-icons custom">stars</i>How do primitive type variable
+                                assignments cause values to change?<br>
+                                <i class="material-icons custom">stars</i>Does the order of assignments
+                                matter?<br></td>
+                            <td><i class="material-icons custom">question_answer</i>
+                                <p>Assignments between variables cause changes in the current values of the
+                                    variables.</p>
+                                <p>
+                                    <pre>
     int val1 = 9;
     int val2 = 7;
     int val3 = 3;
@@ -2491,37 +2734,46 @@ else {
     
     val1 = val2;
     val3 = val1;
-                                    </pre> val1 is assigned the value of val2, which is 7. val3 is then assigned the value of val1, which has changed from 9 to 7. This means that val1, val2 and val3 all have a value
-                                        of 7.
-                                    </p>
-                                    <p>The order of the assignments is important for the final result.</p>
+                                    </pre> val1 is assigned the value of val2, which is 7. val3 is then assigned the
+                                    value of val1, which has changed from 9 to 7. This means that val1, val2 and
+                                    val3 all have a value
+                                    of 7.
+                                </p>
+                                <p>The order of the assignments is important for the final result.</p>
 
-                                </td>
-                            </tr>
+                            </td>
+                        </tr>
 
-                            <tr class="trquestion">
+                        <tr class="trquestion">
 
-                                <td colspan="2" class="infocell">
-                                    Swapping references
-                                </td>
+                            <td colspan="2" class="infocell">
+                                Swapping references
+                            </td>
 
-                            </tr>
-                            <tr>
+                        </tr>
+                        <tr>
 
-                                <td>
-                                    <i class="material-icons custom">stars</i>What happens when references are reassigned?<br>
+                            <td>
+                                <i class="material-icons custom">stars</i>What happens when references are
+                                reassigned?<br>
 
-                                    <i class="material-icons custom">stars</i>Are aliases created when references are reassigned?<br>
-                                    <i class="material-icons custom">stars</i>How do object attributes change after objects are reassigned?<br>
-                                    <i class="material-icons custom">stars</i>Does the order of assignments matter?<br>
-                                </td>
-                                <td>
-                                    <i class="material-icons custom">question_answer</i>
-                                    <p>References are memory addresses, and we see them in using objects. When one 'object' is assigned to another, references are changed and objects point to different locations in memory.</p>
+                                <i class="material-icons custom">stars</i>Are aliases created when references
+                                are reassigned?<br>
+                                <i class="material-icons custom">stars</i>How do object attributes change after
+                                objects are reassigned?<br>
+                                <i class="material-icons custom">stars</i>Does the order of assignments
+                                matter?<br>
+                            </td>
+                            <td>
+                                <i class="material-icons custom">question_answer</i>
+                                <p>References are memory addresses, and we see them in using objects. When one
+                                    'object' is assigned to another, references are changed and objects point to
+                                    different locations in memory.</p>
 
-                                    <p>
-                                        <p>Assume class SoccerPlayer, with a constructor that takes the player name as a parameter.</p>
-                                        <pre>
+                                <p>
+                                    <p>Assume class SoccerPlayer, with a constructor that takes the player name
+                                        as a parameter.</p>
+                                    <pre>
     SoccerPlayer player1 = new SoccerPlayer("Harry Kane");
     SoccerPlayer player2 = new SoccerPlayer("Jamie Vardy");
     SoccerPlayer player3 = new SoccerPlayer("Moussa Sissoko");
@@ -2530,58 +2782,72 @@ else {
     player2 = player3;
     player3 = player1;
                                         </pre>
-                                    </p>
-                                    <p>Above, player1, player2 and player3 have been newed up as instances of class SoccerPlayer. </p>
+                                </p>
+                                <p>Above, player1, player2 and player3 have been newed up as instances of class
+                                    SoccerPlayer. </p>
 
 
-                                    <img class="imgUnitBigger" src="images/assign1.png">
-                                    <br>
-                                    <p>The content of <i>name</i> parameter is transferred to instance variable, name, and getter getName() has been defined. </p>
-                                    <br>
-                                    <p>
-                                        After the first assignment, <i>player1 = player2</i>, player1 points to the memory location that player2's information starts at. At this point, player1 and player2 are aliases of each other. player1.getname() andplayer2.getName()
-                                        both return "Moussa Sissoko" </p>
-                                    <img class="imgUnitBigger" src="images/assign2.png">
+                                <img class="imgUnitBigger" src="images/assign1.png">
+                                <br>
+                                <p>The content of <i>name</i> parameter is transferred to instance variable,
+                                    name, and getter getName() has been defined. </p>
+                                <br>
+                                <p>
+                                    After the first assignment, <i>player1 = player2</i>, player1 points to the
+                                    memory location that player2's information starts at. At this point, player1
+                                    and player2 are aliases of each other. player1.getname()
+                                    andplayer2.getName()
+                                    both return "Moussa Sissoko" </p>
+                                <img class="imgUnitBigger" src="images/assign2.png">
 
 
-                                    <br><br>
-                                    <p>After the second assignment, player2 = player3, the reference for player2 is set to point at the starting memory location for player3's data.</p>
-                                    <img class="imgUnitBigger" src="images/assign3.png">
-                                    <br>
-                                    <p>Now, player2.getname() returns "Jamie Vardy", and player3.getName() also returns "Jamie Vardy".</p>
-                                    <br><br>
-                                    <p>Finally, after the third assignment, player3 = player1, player3 now shares a reference with player1, player1 and player3 end up as aliases of each other.</p>
-                                    <img class="imgUnitBigger" src="images/assign4.png">
-                                    <br><br>
-                                    <p>
-                                        After the assignments, player1's name is "Jamie Vardy", player2's name is "Moussa Sissoko" and player3's name is "Jamie Vardy". The order of these assignments determines the end result.</p>
-                                </td>
+                                <br><br>
+                                <p>After the second assignment, player2 = player3, the reference for player2 is
+                                    set to point at the starting memory location for player3's data.</p>
+                                <img class="imgUnitBigger" src="images/assign3.png">
+                                <br>
+                                <p>Now, player2.getname() returns "Jamie Vardy", and player3.getName() also
+                                    returns "Jamie Vardy".</p>
+                                <br><br>
+                                <p>Finally, after the third assignment, player3 = player1, player3 now shares a
+                                    reference with player1, player1 and player3 end up as aliases of each other.
+                                </p>
+                                <img class="imgUnitBigger" src="images/assign4.png">
+                                <br><br>
+                                <p>
+                                    After the assignments, player1's name is "Jamie Vardy", player2's name is
+                                    "Moussa Sissoko" and player3's name is "Jamie Vardy". The order of these
+                                    assignments determines the end result.</p>
+                            </td>
 
-                            </tr>
+                        </tr>
 
-                    </table>
+                </table>
 
 
-                    </tbody>
-                    </table>
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+                </tbody>
+                </table>
 
             </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
         </div>
+    </div>
+
     </div>
 
 
 
-
-
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
     <script>
         function updateSliderArrowsStatus(
@@ -2604,7 +2870,7 @@ else {
                 $("#slide-left-container").removeClass("active");
             }
         }
-        $(function() {
+        $(function () {
             // Scroll products' slider left/right
             let div = $("#cards-container");
             let cardCount = $(div)
@@ -2617,13 +2883,13 @@ else {
             updateSliderArrowsStatus(div, containerWidth, cardCount, cardWidth);
 
             //Remove scrollbars
-            $("#slide-right-container").click(function(e) {
+            $("#slide-right-container").click(function (e) {
                 if ($(div).scrollLeft() + containerWidth < cardCount * cardWidth) {
                     $(div).animate({
                         scrollLeft: $(div).scrollLeft() + cardWidth
                     }, {
                         duration: speed,
-                        complete: function() {
+                        complete: function () {
                             setTimeout(
                                 updateSliderArrowsStatus(
                                     div,
@@ -2638,13 +2904,13 @@ else {
                 }
                 updateSliderArrowsStatus(div, containerWidth, cardCount, cardWidth);
             });
-            $("#slide-left-container").click(function(e) {
+            $("#slide-left-container").click(function (e) {
                 if ($(div).scrollLeft() + containerWidth > containerWidth) {
                     $(div).animate({
                         scrollLeft: "-=" + cardWidth
                     }, {
                         duration: speed,
-                        complete: function() {
+                        complete: function () {
                             setTimeout(
                                 updateSliderArrowsStatus(
                                     div,
@@ -2661,7 +2927,7 @@ else {
             });
 
             // If resize action ocurred then update the container width value
-            $(window).resize(function() {
+            $(window).resize(function () {
                 try {
                     containerWidth = $("#cards-container").width();
                     updateSliderArrowsStatus(div, containerWidth, cardCount, cardWidth);
@@ -2676,7 +2942,7 @@ else {
     </script>
 
     <script>
-        $('#myModal').on('shown.bs.modal', function() {
+        $('#myModal').on('shown.bs.modal', function () {
             $('#myInput').trigger('focus')
         })
     </script>
